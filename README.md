@@ -1,13 +1,13 @@
 postinstalldebian.sh
 ====================
 
-Un script d'installation à utiliser juste après une install propre.
+Un script d'installation Ã  utiliser juste aprÃ¨s une install propre.
 
-Plus d'infos à venir -- en cours d'écriture
+Plus d'infos Ã  venir -- en cours d'Ã©criture
 
 
 moniptables.sh
 ====================
-Pour régler automatiquement iptables. 
-Les ports ouverts correspondent aux ports modifiés dans les tutos de http://lestutosdesylan.com
+Pour rÃ¨gler automatiquement iptables. 
+Les ports ouverts correspondent aux ports modifiÃ©s dans le script postinstalldebian.sh
 /!\ A venir /!\
