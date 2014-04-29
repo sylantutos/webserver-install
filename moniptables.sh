@@ -1,26 +1,26 @@
 #!/bin/sh
 
 ### BEGIN INIT INFO
-# Provides: Règles iptables
+# Provides: Rï¿½gles iptables
 # Required-Start: $remote_fs $syslog
 # Required-Stop: $remote_fs $syslog
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
-# Short-Description: Règles iptables lestutosdesylan.com
+# Short-Description: Rï¿½gles iptables lestutosdesylan.com
 ### END INIT INFO
 
-# Mise à 0 des règles
+# Mise ï¿½ 0 des rï¿½gles
 iptables -t filter -F
 iptables -t filter -X
-echo "Mise à 0 des règles - Check"
+echo "Mise ï¿½ 0 des rï¿½gles - Check"
 
-# On bloque tout par défaut
+# On bloque tout par dï¿½faut
 iptables -t filter -P INPUT DROP
 iptables -t filter -P FORWARD DROP
 iptables -t filter -P OUTPUT DROP
-echo "Tout bloqué par défaut - Check"
+echo "Tout bloquï¿½ par dï¿½faut - Check"
 
-# On garde les connexions déjà établies
+# On garde les connexions dï¿½jï¿½ ï¿½tablies
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 
@@ -29,12 +29,12 @@ iptables -t filter -A INPUT -i lo -j ACCEPT
 iptables -t filter -A OUTPUT -o lo -j ACCEPT
 echo "Localhost - Check"
 
-# On autorise la réponse aux ping (ICMP)
+# On autorise la rï¿½ponse aux ping (ICMP)
 iptables -t filter -A INPUT -p icmp -j ACCEPT
 iptables -t filter -A OUTPUT -p icmp -j ACCEPT
 echo "Ping - Check"
 
-# On autorise les accès SSH (entrant/sortant)
+# On autorise les accï¿½s SSH (entrant/sortant)
 iptables -t filter -A INPUT -p tcp --dport 1337 -j ACCEPT
 iptables -t filter -A INPUT -p udp --dport 1337 -j ACCEPT
 iptables -t filter -A OUTPUT -p tcp --dport 1337 -j ACCEPT
@@ -62,7 +62,7 @@ iptables -t filter -A INPUT -p tcp --dport 443 -j ACCEPT
 iptables -t filter -A INPUT -p tcp --dport 8443 -j ACCEPT
 echo "http(s) - Check"
 
-# On autorise les accès FTP
+# On autorise les accï¿½s FTP
 iptables -t filter -A OUTPUT -p tcp --dport 2121 -j ACCEPT
 iptables -t filter -A OUTPUT -p tcp --dport 20 -j ACCEPT
 iptables -t filter -A INPUT -p tcp --dport 20 -j ACCEPT
@@ -89,3 +89,7 @@ echo "IMAP - Check"
 iptables -t filter -A INPUT -p tcp --dport 995 -j ACCEPT
 iptables -t filter -A OUTPUT -p tcp --dport 995 -j ACCEPT
 echo "POP3S - Check"
+
+echo "  + ======================== SCRIPT TERMINE! ========================="
+echo "  + Afficher la configuration de la table filter : 'iptables -L -n -v'"
+echo "  + =================================================================="
