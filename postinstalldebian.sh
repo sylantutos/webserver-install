@@ -1,8 +1,10 @@
 #On change le password root
+echo "Mise a jour du mot de passe root"
 passwd root
 
 #On ajoute un utilisateur
 useradd -G root -s /bin/bash -d /home/sylan -m sylan
+echo "Mot de passe pour l'utilisateur sylan ?"
 passwd sylan
 adduser sylan adm
 
