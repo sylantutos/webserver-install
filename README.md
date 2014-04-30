@@ -13,7 +13,13 @@ Pour règler automatiquement iptables.
 Les ports ouverts correspondent aux ports modifiés dans les différents scripts.
 A adapter suivant votre configuration.
 
-/!\ A venir /!\
 
-nginx-mysql-phpmyadmin.sh
+nginx-php5-fpm.sh
 ==============
+
+Pour installer automatiquement nginx et php5-fpm et configurer un vhost.
+A noter que votre nom de domaine (example.org) doit être configuré pour pointer vers l'ip de votre serveur.
+
+
+/!\ A venir /!\
+Proftpd / Mysql / Phpmyadmin
