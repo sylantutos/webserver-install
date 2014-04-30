@@ -47,7 +47,7 @@ echo "" >> /etc/nginx/sites-available/$SITE
 echo "location ~ \.php$ {" >> /etc/nginx/sites-available/$SITE
 echo "fastcgi_pass 127.0.0.1:9000;" >> /etc/nginx/sites-available/$SITE
 echo "fastcgi_index index.php;" >> /etc/nginx/sites-available/$SITE
-echo "fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;" >> /etc/nginx/sites-available/$SITE
+echo "fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;" >> /etc/nginx/sites-available/$SITE
 echo "include /etc/nginx/fastcgi_params;" >> /etc/nginx/sites-available/$SITE
 echo "}" >> /etc/nginx/sites-available/$SITE
 echo "" >> /etc/nginx/sites-available/$SITE
@@ -63,9 +63,9 @@ echo "Lien symbolique créé vers /etc/nginx/sites-enabled/$SITE"
 echo "Vous pouvez désactiver votre site en enlevant le lien symbolique de /etc/nginx/sites-enabled/"
 echo "et le réactiver en remettant le lien symbolique."
 mkdir -p /var/www/$SITE
-echo "<?php" >> /var/www/$SITE/info.php
-echo "phpinfo();" >> /var/www/$SITE/info.php
-echo "?>" >> /var/www/$SITE/info.php
+echo "<?php" >> /var/www/$SITE/index.php
+echo "phpinfo();" >> /var/www/$SITE/index.php
+echo "?>" >> /var/www/$SITE/index.php
 #On met les droits sur le dossier
 chown -R www-data:www-data /var/www/$SITE
 
@@ -74,5 +74,6 @@ service php5-fpm restart
 service nginx restart
 
 echo "Vous pouvez mettre les fichiers de votre site dans /var/www/$SITE ."
-echo "Nous avons créé un fichier info.php dans votre dossier /var/www/$SITE"
-echo "Vous pouvez vérifier que tout fonctionne en vous rendant sur http://$SITE/info.php"
+echo "Nous avons créé un fichier index.php dans votre dossier /var/www/$SITE"
+echo "Vous pouvez vérifier que tout fonctionne en vous rendant sur http://$SITE"
+echo "Vous devriez voir apparaitre le resultat de phpinfo()"
