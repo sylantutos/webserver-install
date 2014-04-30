@@ -104,3 +104,5 @@ echo "       |___/                                                " >> /etc/motd
 #On nettoye un peu tout ça
 apt-get autoremove -y
 apt-get autoclean -y
+cd /root/
+rm -rf MOTDstat-0.0.3* dotdeb.gpg postinstalldebian.sh
