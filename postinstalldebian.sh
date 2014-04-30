@@ -21,6 +21,19 @@ echo '1' > /proc/sys/net/ipv6/conf/lo/disable_ipv6
 echo '1' > /proc/sys/net/ipv6/conf/all/disable_ipv6   
 echo '1' > /proc/sys/net/ipv6/conf/default/disable_ipv6
 
+#On installe nano
+apt-get install -y nano
+
+#On installe un serveur ntp
+apt-get install -y ntp ntpdate
+#On mets les serveurs francais 
+sed -i 's|server 0.debian.pool.ntp.org iburst|server 0.fr.pool.ntp.org|' /etc/ntp.conf
+sed -i 's|server 1.debian.pool.ntp.org iburst|server 1.fr.pool.ntp.org|' /etc/ntp.conf
+sed -i 's|server 2.debian.pool.ntp.org iburst|server 2.fr.pool.ntp.org|' /etc/ntp.conf
+sed -i 's|server 3.debian.pool.ntp.org iburst|server 3.fr.pool.ntp.org|' /etc/ntp.conf
+#Et on relance ntp
+service ntp restart
+
 #On installe bash-completion
 apt-get install -y bash-completion
 #On modifie le .bashrc de root pour en profiter, c'est automatique pour les autres users
@@ -75,7 +88,7 @@ echo "mysqld" >> /etc/motdstat/process
 #Et on configure tout ca
 echo "/                               80      90" >> /etc/motdstat/fstab_limits
 echo "/var                               80      90" >> /etc/motdstat/fstab_limits
-
+echo "/tmp                               80      90" >> /etc/motdstat/fstab_limits
 
 #Let's fun
 rm /etc/motd.orig
@@ -86,3 +99,6 @@ echo " ___) | |_| | | (_| | | | |  ___) |  __/ |   \ V /  __/ |   " >> /etc/motd
 echo "|____/ \__, |_|\__,_|_| |_| |____/ \___|_|    \_/ \___|_|   " >> /etc/motd.orig
 echo "       |___/                                                " >> /etc/motd.orig
 
+#On nettoye un peu tout ça
+apt-get autoremove -y
+apt-get autoclean -y
