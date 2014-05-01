@@ -27,4 +27,4 @@ Pour installer automatiquement proftpd et le configurer.
 
 
 /!\ A venir /!\
-Proftpd / Mysql / Phpmyadmin
+Mysql / Phpmyadmin
