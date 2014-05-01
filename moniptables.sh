@@ -90,6 +90,6 @@ iptables -t filter -A INPUT -p tcp --dport 995 -j ACCEPT
 iptables -t filter -A OUTPUT -p tcp --dport 995 -j ACCEPT
 echo "POP3S - Check"
 
-echo "  + ======================== SCRIPT TERMINE! ========================="
-echo "  + Afficher la configuration de la table filter : 'iptables -L -n -v'"
-echo "  + =================================================================="
+echo "  + ======================== SCRIPT TERMINE! =================="
+echo "  + Afficher la configuration de la table : 'iptables -L -n -v'"
+echo "  + ==========================================================="
