@@ -23,7 +23,7 @@ read SITE
 echo "server {" >> /etc/nginx/sites-available/$SITE
 echo "listen 80;" >> /etc/nginx/sites-available/$SITE
 echo "server_name www.$SITE;" >> /etc/nginx/sites-available/$SITE
-echo "rewrite ^/(.*) http://$SITE/$1 permanent;" >> /etc/nginx/sites-available/$SITE
+echo "rewrite ^/(.*) http://$SITE/\$1 permanent;" >> /etc/nginx/sites-available/$SITE
 echo "}" >> /etc/nginx/sites-available/$SITE
 echo "" >> /etc/nginx/sites-available/$SITE
 echo "server {" >> /etc/nginx/sites-available/$SITE
@@ -38,7 +38,7 @@ echo "#Après index, mettez la page par defaut à charger" >> /etc/nginx/sites-a
 echo "index index.php;" >> /etc/nginx/sites-available/$SITE
 echo "" >> /etc/nginx/sites-available/$SITE
 echo "location / {" >> /etc/nginx/sites-available/$SITE
-echo "try_files $uri $uri/ /index.php?$args;" >> /etc/nginx/sites-available/$SITE
+echo "try_files \$uri \$uri/ /index.php?\$args;" >> /etc/nginx/sites-available/$SITE
 echo "}" >> /etc/nginx/sites-available/$SITE
 echo "" >> /etc/nginx/sites-available/$SITE
 echo "location ~* /(images|logs|tmp)/.*\.(php|pl|py|jsp|asp|sh|cgi)$ {" >> /etc/nginx/sites-available/$SITE
