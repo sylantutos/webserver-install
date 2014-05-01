@@ -86,8 +86,9 @@ cd MOTDstat-0.0.3
 make install
 motdstat --generate
 echo "nginx" >> /etc/motdstat/process
-echo "php5-fpm" >> /etc/motdstat/process
+echo "php-fpm" >> /etc/motdstat/process
 echo "mysqld" >> /etc/motdstat/process
+echo "proftpd" >> /etc/motdstat/process
 # On mets a jour le Message Of The Day toutes les 5mn
 (crontab -l 2>/dev/null; echo "*/5 * * * * /usr/bin/motdstat --generate") | crontab -
 # Et on configure tout ca
