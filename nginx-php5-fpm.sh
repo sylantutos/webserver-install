@@ -1,23 +1,25 @@
-#On va commencer par supprimer apache et tous ses composants
+#!/bin/sh
+
+# On va commencer par supprimer apache et tous ses composants
 apt-get purge -y apache2*
 
-#On installe nginx (prononcez EngineX)
+# On installe nginx (prononcez EngineX)
 apt-get install -y nginx
 service nginx restart
 
-#On installe php5-fpm
+# On installe php5-fpm
 apt-get install -y php5-fpm
-#On configure le listen sur le port 9000
+# On configure le listen sur le port 9000
 sed -i 's|listen = /var/run/php5-fpm.sock|listen = 127.0.0.1:9000|' /etc/php5/fpm/pool.d/www.conf
 
-#On supprime la configuration par défaut
+# On supprime la configuration par défaut
 rm /etc/nginx/sites-available/default
 rm /etc/nginx/sites-enabled/default
 
-#On demande le nom du site
+# On demande le nom du site
 echo -n "Quel est le nom de votre site web? (sous la forme example.org) : "
 read SITE
-#On créé notre propre fichier de configuration
+# On créé notre propre fichier de configuration
 echo "server {" >> /etc/nginx/sites-available/$SITE
 echo "listen 80;" >> /etc/nginx/sites-available/$SITE
 echo "server_name www.$SITE;" >> /etc/nginx/sites-available/$SITE
@@ -66,10 +68,10 @@ mkdir -p /var/www/$SITE
 echo "<?php" >> /var/www/$SITE/index.php
 echo "phpinfo();" >> /var/www/$SITE/index.php
 echo "?>" >> /var/www/$SITE/index.php
-#On met les droits sur le dossier
+# On met les droits sur le dossier
 chown -R www-data:www-data /var/www/$SITE
 
-#On redemarre le serveur nginx et php5-fpm
+# On redemarre le serveur nginx et php5-fpm
 service php5-fpm restart
 service nginx restart
 
