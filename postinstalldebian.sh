@@ -3,10 +3,12 @@ echo "Mise a jour du mot de passe root"
 passwd root
 
 #On ajoute un utilisateur
-useradd -G root -s /bin/bash -d /home/sylan -m sylan
-echo "Mot de passe pour l'utilisateur sylan ?"
-passwd sylan
-adduser sylan adm
+echo -n "Quel nom voulez vous donner au nouvel utilisateur? : "
+read UserName
+useradd -G root -s /bin/bash -d /home/$UserName -m $UserName
+echo "Mot de passe pour l'utilisateur $UserName ?"
+passwd $UserName
+adduser $UserName adm
 
 #On va mettre a jour le serveur
 #Et on ajoute les sources du projet DotDeb pour avoir les derniers patchs de securite
