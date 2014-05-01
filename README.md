@@ -20,5 +20,11 @@ Pour installer automatiquement nginx et php5-fpm et configurer un vhost.
 A noter que votre nom de domaine (example.org) doit être configuré pour pointer vers l'ip de votre serveur.
 
 
+proftpd.sh
+==============
+
+Pour installer automatiquement proftpd et le configurer.
+
+
 /!\ A venir /!\
 Proftpd / Mysql / Phpmyadmin
