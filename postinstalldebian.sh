@@ -16,7 +16,7 @@ adduser $UserName adm
 echo "deb http://packages.dotdeb.org wheezy all" >> /etc/apt/sources.list
 echo "deb-src http://packages.dotdeb.org wheezy all" >> /etc/apt/sources.list
 wget http://www.dotdeb.org/dotdeb.gpg
-cat dotdeb.gpg | sudo apt-key add -
+cat dotdeb.gpg | apt-key add -
 # Et on met a jour
 apt-get update
 apt-get upgrade -y
