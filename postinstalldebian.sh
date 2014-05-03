@@ -21,11 +21,6 @@ cat dotdeb.gpg | apt-key add -
 apt-get update
 apt-get upgrade -y
 
-# On désactive l'ipv6 (peu d'intérêt d'y passer)
-echo '1' > /proc/sys/net/ipv6/conf/lo/disable_ipv6   
-echo '1' > /proc/sys/net/ipv6/conf/all/disable_ipv6   
-echo '1' > /proc/sys/net/ipv6/conf/default/disable_ipv6
-
 # On installe nano
 apt-get install -y nano
 
@@ -92,9 +87,9 @@ echo "proftpd" >> /etc/motdstat/process
 # On mets a jour le Message Of The Day toutes les 5mn
 (crontab -l 2>/dev/null; echo "*/5 * * * * /usr/bin/motdstat --generate") | crontab -
 # Et on configure tout ca
-echo "/                               80      90" >> /etc/motdstat/fstab_limits
-echo "/var                               80      90" >> /etc/motdstat/fstab_limits
-echo "/tmp                               80      90" >> /etc/motdstat/fstab_limits
+# echo "/                               80      90" >> /etc/motdstat/fstab_limits
+# echo "/var                               80      90" >> /etc/motdstat/fstab_limits
+# echo "/tmp                               80      90" >> /etc/motdstat/fstab_limits
 
 # Let's fun
 rm /etc/motd.orig
