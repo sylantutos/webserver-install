@@ -29,6 +29,12 @@ iptables -t filter -A INPUT -i lo -j ACCEPT
 iptables -t filter -A OUTPUT -o lo -j ACCEPT
 echo "Localhost - Check"
 
+# On désactive l'ipv6 (peu d'intérêt d'y passer)
+echo '1' > /proc/sys/net/ipv6/conf/lo/disable_ipv6   
+echo '1' > /proc/sys/net/ipv6/conf/all/disable_ipv6   
+echo '1' > /proc/sys/net/ipv6/conf/default/disable_ipv6
+echo "IPV6 - Check"
+
 # On autorise la réponse aux ping (ICMP)
 iptables -t filter -A INPUT -p icmp -j ACCEPT
 iptables -t filter -A OUTPUT -p icmp -j ACCEPT
